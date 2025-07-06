@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Colaborativo</title>
+    <link rel="stylesheet" href="style-mobile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile overlay -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-users"></i>
+                Site Colaborativo
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-container" id="nav-container">
+        <ul class="nav">
+            <li><a href="#" class="nav-link active" data-section="home"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="#" class="nav-link" data-section="info"><i class="fas fa-info-circle"></i> Informações</a></li>
+            <li><a href="#" class="nav-link" data-section="chat"><i class="fas fa-comments"></i> Chat</a></li>
+            <li><a href="#" class="nav-link" data-section="slides"><i class="fas fa-presentation"></i> Slides Manus</a></li>
+            <li><a href="#" class="nav-link" data-section="agents"><i class="fas fa-robot"></i> Meus Agentes</a></li>
+            <li><a href="#" class="nav-link" data-section="como"><i class="fas fa-question-circle"></i> Como</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="content-section active">
+            <div class="hero">
+                <h1>Bem-vindo ao seu espaço colaborativo!</h1>
+                <p>Este é o seu hub central para organizar informações, colaborar com outras pessoas e gerenciar seus agentes de IA.</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Organize Informações</h3>
+                    <p>Centralize e organize todas as informações importantes em um só lugar.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Colabore</h3>
+                    <p>Converse e colabore com outras pessoas em tempo real.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-presentation"></i>
+                    <h3>Slides Integrados</h3>
+                    <p>Visualize e compartilhe slides criados pelo Manus.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Gerencie Agentes</h3>
+                    <p>Organize e controle seus agentes de produção.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Section -->
+        <section id="info" class="content-section">
+            <div class="two-column">
+                <div class="sidebar">
+                    <h3>Categorias</h3>
+                    <ul id="categories-list">
+                        <li><a href="#" class="active" data-category="geral">Geral</a></li>
+                        <li><a href="#" data-category="projetos">Projetos</a></li>
+                        <li><a href="#" data-category="ideias">Ideias</a></li>
+                    </ul>
+                    <button class="btn btn-small" id="add-category">
+                        <i class="fas fa-plus"></i> Adicionar Categoria
+                    </button>
+                </div>
+                <div class="main-area">
+                    <div class="info-header">
+                        <h2>Informações Importantes</h2>
+                        <button class="btn btn-small" id="add-info">
+                            <i class="fas fa-plus"></i> Adicionar Informação
+                        </button>
+                    </div>
+                    <div id="info-content">
+                        <div class="info-item">
+                            <h4>Exemplo de Informação</h4>
+                            <p>Esta é uma informação de exemplo. Clique em "Adicionar Informação" para criar suas próprias entradas.</p>
+                            <div class="info-actions">
+                                <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chat Section -->
+        <section id="chat" class="content-section">
+            <div class="two-column">
+                <div class="sidebar">
+                    <h3>Salas de Chat</h3>
+                    <ul id="chat-rooms">
+                        <li><a href="#" class="active" data-room="geral">geral</a></li>
+                        <li><a href="#" data-room="projetos">projetos</a></li>
+                        <li><a href="#" data-room="ideias">ideias</a></li>
+                    </ul>
+                    <button class="btn btn-small" id="add-room">
+                        <i class="fas fa-plus"></i> Nova Sala
+                    </button>
+                </div>
+                <div class="main-area">
+                    <div class="chat-container">
+                        <div class="chat-header">
+                            <h3>Chat Colaborativo</h3>
+                            <p>Bem-vindo ao chat colaborativo! Aqui você pode conversar com outras pessoas em tempo real.</p>
+                        </div>
+                        <div class="chat-messages" id="chat-messages">
+                            <!-- Mensagens serão inseridas aqui -->
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" id="message-input" placeholder="Digite sua mensagem...">
+                            <button class="btn" id="send-message">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slides Section -->
+        <section id="slides" class="content-section">
+            <div class="section-header">
+                <h2>Slides do Manus</h2>
+                <div class="section-actions">
+                    <button class="btn" id="upload-slides">
+                        <i class="fas fa-upload"></i> Upload de Slides
+                    </button>
+                    <button class="btn" id="upload-word">
+                        <i class="fas fa-file-word"></i> Upload Word
+                    </button>
+                </div>
+            </div>
+            <div class="slides-grid" id="slides-grid">
+                <div class="slide-card">
+                    <div class="slide-preview">
+                        <i class="fas fa-file-powerpoint"></i>
+                    </div>
+                    <div class="slide-info">
+                        <h4>Apresentação Exemplo</h4>
+                        <p>Exemplo de slide criado pelo Manus</p>
+                        <div class="slide-actions">
+                            <button class="btn-view"><i class="fas fa-eye"></i> Visualizar</button>
+                            <button class="btn-share"><i class="fas fa-share"></i> Compartilhar</button>
+                            <button class="btn-delete"><i class="fas fa-trash"></i> Excluir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agents Section -->
+        <section id="agents" class="content-section">
+            <div class="section-header">
+                <h2>Meus Agentes</h2>
+                <div class="section-actions">
+                    <button class="btn" id="add-agent">
+                        <i class="fas fa-plus"></i> Adicionar Agente
+                    </button>
+                    <select id="filter-agents" class="btn-secondary">
+                        <option value="all">Todos os Agentes</option>
+                        <option value="active">Apenas Ativos</option>
+                        <option value="inactive">Apenas Inativos</option>
+                    </select>
+                </div>
+            </div>
+            <div class="agents-grid" id="agents-grid">
+                <div class="agent-card">
+                    <div class="agent-status active"></div>
+                    <div class="agent-info">
+                        <h4>Agente de Conteúdo</h4>
+                        <p>Responsável por criar e organizar conteúdo do site</p>
+                        <div class="agent-stats">
+                            <div class="stat">
+                                <i class="fas fa-tasks"></i>
+                                <span>5 tarefas</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-clock"></i>
+                                <span>Ativo há 2h</span>
+                            </div>
+                        </div>
+                        <div class="agent-actions">
+                            <button class="btn-pause"><i class="fas fa-pause"></i></button>
+                            <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-status inactive"></div>
+                    <div class="agent-info">
+                        <h4>Agente de Design</h4>
+                        <p>Cuida do design visual e experiência do usuário</p>
+                        <div class="agent-stats">
+                            <div class="stat">
+                                <i class="fas fa-tasks"></i>
+                                <span>2 tarefas</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-clock"></i>
+                                <span>Inativo</span>
+                            </div>
+                        </div>
+                        <div class="agent-actions">
+                            <button class="btn-play"><i class="fas fa-play"></i></button>
+                            <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Como Section -->
+        <section id="como" class="content-section">
+            <div class="section-header">
+                <h2>Como Usar</h2>
+                <div class="section-actions">
+                    <button class="btn" id="add-como-item">
+                        <i class="fas fa-plus"></i> Adicionar Item
+                    </button>
+                </div>
+            </div>
+            <div class="como-list" id="como-list">
+                <div class="como-item">
+                    <div class="como-header" onclick="toggleComoItem(1)">
+                        <h4>Como adicionar informações</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="como-content" id="como-content-1">
+                        <p>Para adicionar informações ao site:</p>
+                        <ol>
+                            <li>Vá para a seção "Informações"</li>
+                            <li>Selecione uma categoria na barra lateral</li>
+                            <li>Clique em "Adicionar Informação"</li>
+                            <li>Preencha o título e conteúdo</li>
+                            <li>Clique em "Salvar"</li>
+                        </ol>
+                    </div>
+                    <div class="como-actions">
+                        <button class="btn-edit" onclick="editComoItem(1)"><i class="fas fa-edit"></i></button>
+                        <button class="btn-delete" onclick="deleteComoItem(1)"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                
+                <div class="como-item">
+                    <div class="como-header" onclick="toggleComoItem(2)">
+                        <h4>Como usar o chat</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="como-content" id="como-content-2">
+                        <p>Para participar do chat colaborativo:</p>
+                        <ol>
+                            <li>Acesse a seção "Chat"</li>
+                            <li>Escolha uma sala na barra lateral</li>
+                            <li>Digite sua mensagem na caixa de texto</li>
+                            <li>Pressione Enter ou clique no botão enviar</li>
+                            <li>Suas mensagens aparecerão em tempo real</li>
+                        </ol>
+                    </div>
+                    <div class="como-actions">
+                        <button class="btn-edit" onclick="editComoItem(2)"><i class="fas fa-edit"></i></button>
+                        <button class="btn-delete" onclick="deleteComoItem(2)"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                
+                <div class="como-item">
+                    <div class="como-header" onclick="toggleComoItem(3)">
+                        <h4>Como gerenciar agentes</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="como-content" id="como-content-3">
+                        <p>Para gerenciar seus agentes de IA:</p>
+                        <ol>
+                            <li>Vá para a seção "Meus Agentes"</li>
+                            <li>Clique em "Adicionar Agente" para criar um novo</li>
+                            <li>Use os botões play/pause para controlar o status</li>
+                            <li>Filtre agentes por status usando o dropdown</li>
+                            <li>Edite ou exclua agentes conforme necessário</li>
+                        </ol>
+                    </div>
+                    <div class="como-actions">
+                        <button class="btn-edit" onclick="editComoItem(3)"><i class="fas fa-edit"></i></button>
+                        <button class="btn-delete" onclick="deleteComoItem(3)"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Site Colaborativo - Criado com Manus</p>
+    </footer>
+
+    <!-- Hidden file inputs -->
+    <input type="file" id="slides-file-input" accept=".pdf,.ppt,.pptx,.odp" multiple style="display: none;">
+    <input type="file" id="word-file-input" accept=".doc,.docx" multiple style="display: none;">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+    <script src="script-static.js"></script>
+</body>
+</html>
+
